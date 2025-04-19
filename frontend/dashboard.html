@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnKoat IntelliKoat™</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark gradient-background">
+    <div class="container">
+      <a class="navbar-brand" href="#">EnKoat IntelliKoat™</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Quote Submission</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Performance Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">EnKoat Project Performance Dashboard</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Data Filters</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3 mb-2">
+                <label for="stateFilter" class="form-label">Filter by State</label>
+                <select class="form-select" id="stateFilter">
+                  <option value="">All States</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-2">
+                <label for="roofTypeFilter" class="form-label">Filter by Roof Type</label>
+                <select class="form-select" id="roofTypeFilter">
+                  <option value="">All Types</option>
+                  <option value="Metal">Metal</option>
+                  <option value="TPO">TPO</option>
+                  <option value="Foam">Foam</option>
+                  <option value="Shingle">Shingle</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-2">
+                <label for="dateFromFilter" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="dateFromFilter">
+              </div>
+              <div class="col-md-3 mb-2">
+                <label for="dateToFilter" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="dateToFilter">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-8">
+                <button id="applyFilters" class="btn btn-primary">Apply Filters</button>
+                <button id="resetFilters" class="btn btn-secondary ms-2">Reset</button>
+              </div>
+              <div class="col-md-4 text-end">
+                <span id="filterStatus" class="text-muted">Showing all quotes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card text-white bg-primary h-100">
+          <div class="card-body">
+            <h5 class="card-title">Total Projects</h5>
+            <h2 class="card-text" id="totalProjects">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-success h-100">
+          <div class="card-body">
+            <h5 class="card-title">Average Roof Size</h5>
+            <h2 class="card-text" id="avgRoofSize">-</h2>
+            <p>Square Feet</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-info h-100">
+          <div class="card-body">
+            <h5 class="card-title">Total States Covered</h5>
+            <h2 class="card-text" id="statesCovered">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-warning h-100">
+          <div class="card-body">
+            <h5 class="card-title">Est. Total Energy Savings</h5>
+            <h2 class="card-text" id="totalEnergySavings">-</h2>
+            <p>kWh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects by State -->
+    <div class="row mb-4">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Projects by State</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="stateProjectsChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Average Roof Size by Roof Type -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Average Roof Size by Roof Type</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="roofSizeByTypeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Project Completion Trends -->
+    <div class="row mb-4">
+      <div class="col-md-8 mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Monthly Project Completion Trends</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="monthlyTrendChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estimated Energy Savings by Roof Type -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Estimated Energy Savings by Roof Type</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="energySavingsByTypeChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <button id="exportPDF" class="btn btn-danger">Export PDF Report</button>
+        <button id="exportCSV" class="btn btn-success ms-3">Export CSV Data</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="py-3 my-4">
+    <p class="text-center text-body-secondary">© 2025 EnKoat IntelliKoat™</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html> 
+</html> 

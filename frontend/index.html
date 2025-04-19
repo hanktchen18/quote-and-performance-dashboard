@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnKoat IntelliKoat™</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark gradient-background">
+    <div class="container">
+      <a class="navbar-brand" href="#">EnKoat IntelliKoat™</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Quote Submission</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Performance Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="container mt-5">
+    <div class="row">
+      <form id="quoteForm">
+        <div class="col-12">
+          <label for="contractorName" class="form-label">Contractor Name</label>
+          <input type="text" class="form-control" id="contractorName" placeholder="" value="" required="">
+        </div>
+
+        <div class="col-12">
+          <label for="companyName" class="form-label">Company Name</label>
+          <input type="text" class="form-control" id="companyName" placeholder="" value="" required="">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="roofSize" class="form-label">Roof Size (sq ft)</label>
+              <input type="number" class="form-control" id="roofSize" min="1" required>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label for="roofType" class="form-label">Roof Type (Metal, TPO, Foam, Shingle, Other)</label>
+              <select class="form-select" id="roofType" required>
+                <option value="" selected disabled>Please select a roof type</option>
+                <option value="Metal">Metal</option>
+                <option value="TPO">TPO</option>
+                <option value="Foam">Foam</option>
+                <option value="Shingle">Shingle</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="city" class="form-label">City</label>
+              <input type="text" class="form-control" id="city" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" required>
+            </div>
+            
+              <div class="mb-4">
+                <label for="projectDate" class="form-label">Project Date</label>
+                <input type="date" class="form-control" id="projectDate" required>
+              </div>
+
+            <div class="d-grid">
+                <button type="submit">
+                    <span class="span-mother">
+                      <span>Q</span>
+                      <span>u</span>
+                      <span>o</span>
+                      <span>t</span>
+                      <span>e</span>
+                    </span>
+                    <span class="span-mother2">
+                      <span>S</span>
+                      <span>u</span>
+                      <span>b</span>
+                      <span>m</span>
+                      <span>i</span>
+                      <span>t</span>
+                    </span>
+                  </button>
+            </div>
+        </div>
+      </form>
+      
+      <div id="alertMessage" class="alert mt-3" role="alert" style="display: none;"></div>
+    </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="py-3 my-4">
+    <p type="submit" class="text-center text-body-secondary">© 2025 EnKoat IntelliKoat™</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/quote.js"></script>
+</body>
+</html> 
