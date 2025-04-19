@@ -36,8 +36,8 @@ The system consists of three main components:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/enkoat-contractor-system.git
-   cd enkoat-contractor-system
+   git clone https://github.com/hanktchen18/quote-system-and-performance-dashboard.git
+   cd quote-system-and-performance-dashboard
    ```
 
 2. Install backend dependencies:
