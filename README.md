@@ -1,4 +1,4 @@
-# EnKoat Contractor Quote System
+# Quote System and Performance Dashboard
 
 A full-stack application designed for EnKoat company to manage contractor quote submissions and visualize project performance metrics.
 
